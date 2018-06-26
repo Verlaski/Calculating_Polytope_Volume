@@ -55,8 +55,7 @@ F <- matrix(0, nrow = 100, ncol = 100)
         
         for(j in 1:m){
           if(CxD[j] == FALSE){
-            FLAG <- 1
-            break
+            FLAG <- 1; break
           }
         }
         if(vertexNumber > 0){
@@ -65,13 +64,11 @@ F <- matrix(0, nrow = 100, ncol = 100)
             CxD <- x == Vertex[ ,j]
             for (k in 1:n){
               if(CxD[k] == FALSE){
-                FLAG1 <- 1
-                break
+                FLAG1 <- 1; break
               }
             }
             if(FLAG1 == 0){
-              FLAG <- 2
-              break
+              FLAG <- 2; break
             }
           }
         }
@@ -94,7 +91,6 @@ VolumeCal <- function(d, last, S){
   # This function is a recursive depth-first procedure to generate all possible simplexs
   # initialize L to contain the empty set
   
-  
   #--- Variable --
   # d: dimension
   # last: the vertices of the cell e_j'^{d+1}
@@ -104,17 +100,12 @@ VolumeCal <- function(d, last, S){
   # SLocal: local variable, SLocal <- S \cup \eta{e_j^{d}}
   # VolumeSimplex: Volume of each simplex
   
-  
-  
   # initialize l, L, LRow, SLocal, VolumeSimplex
   L = matrix(0, nrow = 100, ncol = vertexNumber)
   l = matrix(0, nrow = 1, ncol = vertexNumber)
-  LRow <- 0
-  SLocal <- S
-  VolumeSimplex <- 0 
+  LRow <- 0; SLocal <- S; VolumeSimplex <- 0 
   
   for(k in 1: m){
-    
     # l = F_k \cup last, Select a candidate for e_j^d
     for(j in 1 : vertexNumber){ 
       if(F[k,j]==1 & last[j]==1)
@@ -122,7 +113,6 @@ VolumeCal <- function(d, last, S){
       else
         l[j] <- 0
     }
-
     
     #Check if the candidate has already been generated
     FLAG3 <- 0
@@ -131,13 +121,11 @@ VolumeCal <- function(d, last, S){
         FLAG2 <- 0
         for(j in 1: vertexNumber){
           if(L[i,j] != l[j]){
-            FLAG2 <- 1
-            break
+            FLAG2 <- 1; break
           }
         }
         if(FLAG2 == 0){
-          FLAG3 <- 1
-          break
+          FLAG3 <- 1; break
         }
       }
     }
@@ -145,18 +133,15 @@ VolumeCal <- function(d, last, S){
     # Check if l \notin L and if \eta(l)\notin S
     EtaL <- -1
     if(FLAG3 == 0){ # if l \notin L
-      LRow <- LRow + 1
-      L[LRow,] <- l
+      LRow <- LRow + 1; L[LRow,] <- l
       for (i in 1:vertexNumber){
         if(l[i] == 1){
-          EtaL <- i
-          break
+          EtaL <- i; break
         }
       }
       if(EtaL != -1){
         if(S[EtaL] == 0){ # if \eta(l)\notin S
-          SLocal <- S
-          SLocal[EtaL] <- 1
+          SLocal <- S; SLocal[EtaL] <- 1
           if(d > 0){
             VolumeSimplex <- VolumeSimplex + VolumeCal(d-1, l, SLocal)
           }
