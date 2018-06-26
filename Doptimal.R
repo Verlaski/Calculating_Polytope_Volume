@@ -1,5 +1,6 @@
 DOptimal <- function(EA){
   
+  # transfroming this point set to the centrally symmetric set
   Em <- nrow(EA)
   En <- ncol(EA)
   EAMinus <- -1*EA
@@ -22,6 +23,7 @@ DOptimal <- function(EA){
   Rcol <- ncol(RA) #number of the sample points
   Rrow <- nrow(RA) # dimension of the points
   
+  # Start points: RP[ ,1] <- 1/m e
   RP <- matrix(nrow = Rcol)
   for(Ri in 1:Rcol){
     RP[Ri, 1] <- 1/Rcol
