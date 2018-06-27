@@ -5,7 +5,7 @@ Goal: given the polytope in the form of linear equalities, computing its volume 
 Main idea: dividing polytope into simplices and sum up the volumes of the resulting simplices. 
 
 ## Random-Walk Method ([Ioannis Z. Emiris and Vissarion Fisikopoulos, 2014](https://www.cs.bgu.ac.il/~eurocg14/papers/paper_35.pdf))
-Main procedures are:
+Main procedures:
   *  Hit-and-run random walk, which generates a uniform distribution of points in convex body
   *  Rounding and sandwiching polytope, which is finding the smallest enclosed ellipsoid
   *  Multiphase Monte Carlo: approximating polytope volume by telescopic product
