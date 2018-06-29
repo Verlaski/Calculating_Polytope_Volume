@@ -293,7 +293,6 @@ PolytopeVolume <- function(A, B, epsilon){
     Vol <- Vol * (N/wcount)
     Fi <- Fi - Step
     S <- Snew
-    print(Vol)
     
     
   }
